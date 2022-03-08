@@ -39,7 +39,8 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: Editor
+          targetPlatform: StandaloneWindows64
+          customParameters: -EnableHeadlessMode
 
       - uses: actions/upload-artifact@v2
         with:
