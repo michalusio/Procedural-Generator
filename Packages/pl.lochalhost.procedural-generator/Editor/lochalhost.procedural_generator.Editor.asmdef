@@ -1,0 +1,16 @@
+{
+    "name": "lochalhost.procedural_generator.Editor",
+    "rootNamespace": "Packages.pl.lochalhost.procedural_generator.Editor",
+    "references": [
+        "GUID:eb004e8f5641d8042be8e625e2342ee0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

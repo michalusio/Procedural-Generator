@@ -1,0 +1,14 @@
+{
+	"name": "lochalhost.procedural_generator.Runtime",
+    "rootNamespace": "Packages.pl.lochalhost.procedural_generator.Runtime",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

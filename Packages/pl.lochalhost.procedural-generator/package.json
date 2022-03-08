@@ -1,0 +1,19 @@
+{
+  "name": "pl.lochalhost.procedural-generator",
+  "version": "0.0.1",
+  "displayName": "Procedural Generator",
+  "description": "A toolkit for procedurally generating objects for your game",
+  "unity": "2020.1",
+  "license": "MIT",
+  "keywords": [
+    "procedural",
+    "generation",
+    "tool"
+  ],
+  "author": {
+    "name": "Micha\u0142 Isalski",
+    "email": "isalski.michal+unity@gmail.com",
+    "url": "https://lochalhost.pl"
+  },
+  "type": "tool"
+}

@@ -1,0 +1,129 @@
+:root {
+  --color-100: #F3F4F8;
+  --color-200: #D2D4DA;
+  --color-300: #B3B5BD;
+  --color-400: #9496A1;
+  --color-500: #777986;
+  --color-600: #5B5D6B;
+  --color-700: #404252;
+  --color-800: #282A3A;
+  --color-900: #101223;
+}
+
+RootElement {
+  align-self: stretch;
+  overflow: scroll;
+  flex-grow: 1;
+}
+
+BezierElement {
+  position: absolute;
+}
+
+MeshDisplay {
+	width: 260px;
+	height: 260px;
+	margin: 4px;
+	border-width: 2px;
+	border-color: var(--color-900);
+}
+
+.node {
+	position: absolute;
+	background-color: var(--color-500);
+	border-radius: 8px;
+	border-color: var(--color-900);
+}
+
+.node.dragged {
+	border-width: 0 2px 2px 0;
+}
+
+.node>VisualElement {
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.node>VisualElement>.in {
+}
+.node>VisualElement>.out {
+	align-items: flex-end;
+}
+
+NodeHeader {
+	-unity-text-align: middle-left;
+	align-self: stretch;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+    background-color: var(--color-700);
+    padding-left: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+NodeHeader>Button {
+	border-width: 1px;
+	margin: 0;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+NodeIn, NodeOut {
+	flex-direction: row;
+	align-items: center;
+}
+
+NodeSocket {
+	width: 12px;
+	height: 12px;
+	margin: 2px 0 2px 0;
+	border-width: 2px;
+	border-radius: 8px;
+	border-color: white;
+	background-color: var(--color-800);
+}
+
+NodeSocket.multi {
+	border-radius: 0;
+}
+
+.filled>NodeSocket {
+	background-color: var(--color-100);
+}
+
+.connection-from NodeIn>NodeSocket:hover {
+	background-color: var(--color-500);
+}
+
+.connection-to NodeOut>NodeSocket:hover {
+	background-color: var(--color-500);
+}
+
+PopupField>.unity-popup-field__label {
+	min-width: 0;
+}
+
+.looplink {
+	border-color: black;
+}
+
+.single { border-color: yellow; }
+.ienumerable_1__single { border-color: rgb(128,128,0); }
+
+.int32 { border-color: cyan; }
+.ienumerable_1__int32 { border-color: darkcyan; }
+
+.vector2 { border-color: violet; }
+.ienumerable_1__vector2 { border-color: darkviolet; }
+
+.vector3 { border-color: red; }
+.ienumerable_1__vector3 { border-color: darkred; }
+
+.matrix4x4 { border-color: green; }
+.ienumerable_1__matrix4x4 {	border-color: darkgreen; }
+
+.mesh { border-color: blue; }
+.ienumerable_1__mesh { border-color: darkblue; }
