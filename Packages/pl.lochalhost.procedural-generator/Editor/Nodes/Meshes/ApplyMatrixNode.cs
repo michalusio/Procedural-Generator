@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
 {
     [NodeName("Meshes/Apply Matrix")]
-    internal class ApplyMatrixNode : Node
+    public class ApplyMatrixNode : Node
     {
         public ApplyMatrixNode(): base("Apply Matrix")
         {

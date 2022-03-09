@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Models
 {
     [NodeName("Models/Heightmap")]
-    internal class HeightmapNode : Node
+    public class HeightmapNode : Node
     {
         public HeightmapNode(): base("Heightmap")
         {

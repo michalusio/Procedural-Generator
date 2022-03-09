@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes
 {
     [NodeName("Display")]
-    internal class DisplayNode : Node
+    public class DisplayNode : Node
     {
         private readonly Label label = new Label();
         public DisplayNode(): base("Display")

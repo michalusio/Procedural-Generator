@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard
 {
     [NodeName("Standard/Random")]
-    internal class RandomNode : Node
+    public class RandomNode : Node
     {
         private readonly Random rng;
         public RandomNode(): base("Random")

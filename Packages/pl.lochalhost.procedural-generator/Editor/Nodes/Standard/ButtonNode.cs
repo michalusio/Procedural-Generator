@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard
 {
     [NodeName("Standard/Button")]
-    internal class ButtonNode : Node
+    public class ButtonNode : Node
     {
         private readonly Button btn;
         public ButtonNode(): base("Button")

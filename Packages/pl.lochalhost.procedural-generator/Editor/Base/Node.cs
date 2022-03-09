@@ -11,7 +11,7 @@ using UnityEngine.UIElements;
 
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
 {
-    internal abstract class Node: VisualElement, ISerializable<Node, SerializableNode>, INode
+    public abstract class Node: VisualElement, ISerializable<Node, SerializableNode>, INode
     {
         public IList<NodeIn> Inputs => InNodes.Nodes;
         public IList<NodeOut> Outputs => OutNodes.Nodes;
@@ -181,7 +181,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
         }
     }
 
-    internal class NodeIn: NodeInOut
+    public class NodeIn: NodeInOut
     {
         public NodeIn(string label, Type type, bool multi) : base(label, type, multi)
         {
@@ -206,7 +206,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
         }
     }
 
-    internal class NodeOut : NodeInOut
+    public class NodeOut : NodeInOut
     {
         public NodeOut(string label, Type type) : base(label, type)
         {
@@ -215,7 +215,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
         }
     }
 
-    internal class NodeInOut : VisualElement
+    public class NodeInOut : VisualElement
     {
         public readonly ObservableCollection<Connection> Connections = new ObservableCollection<Connection>();
         public Node Node { get; private set; }

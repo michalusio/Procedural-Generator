@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard
 {
     [NodeName("Standard/Float")]
-    internal class FloatNode : Node
+    public class FloatNode : Node
     {
         private readonly FloatField field = new FloatField();
 

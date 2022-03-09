@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Models
 {
     [NodeName("Models/Plane")]
-    internal class PlaneNode : Node
+    public class PlaneNode : Node
     {
         public PlaneNode(): base("Plane")
         {

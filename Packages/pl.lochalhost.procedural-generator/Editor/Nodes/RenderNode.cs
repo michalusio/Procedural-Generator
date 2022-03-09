@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes
 {
     [NodeName("Render")]
-    internal class RenderNode : Node
+    public class RenderNode : Node
     {
         private readonly MeshDisplay display = new MeshDisplay();
 

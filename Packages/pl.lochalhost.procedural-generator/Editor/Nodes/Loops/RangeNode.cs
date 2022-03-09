@@ -6,7 +6,7 @@ using System.Linq;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops
 {
     [NodeName("Loops/Range")]
-    internal class RangeNode : Node
+    public class RangeNode : Node
     {
         public RangeNode(): base("Range")
         {

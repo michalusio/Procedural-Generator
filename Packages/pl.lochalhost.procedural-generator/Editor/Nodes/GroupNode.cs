@@ -11,7 +11,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes
 {
     [NodeName("Group")]
-    internal class GroupNode : Node
+    public class GroupNode : Node
     {
         private readonly ObjectField objectField = new ObjectField
         {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math
 {
     [NodeName("Math/Integer To Float")]
-    internal class IntegerToFloatNode : Node
+    public class IntegerToFloatNode : Node
     {
         public IntegerToFloatNode(): base("I2F")
         {

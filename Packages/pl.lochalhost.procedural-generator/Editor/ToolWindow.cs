@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using UnityEditor.UIElements;
 using System.Linq;
 using System;
-using Packages.pl.lochalhost.procedural_generator.Runtime;
 using System.Reflection;
 using Packages.pl.lochalhost.procedural_generator.Editor.Packages.pl.lochalhost.procedural_generator.Editor;
+using Packages.pl.lochalhost.procedural_generator.Runtime;
 
 namespace Packages.pl.lochalhost.procedural_generator.Editor
 {
@@ -19,6 +19,11 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
         private bool afterAssetLoad;
 
         private List<(ConstructorInfo, string)> NodeTypes;
+
+        public ToolWindow()
+        {
+            saveChangesMessage = "You have unsaved changes. Do you really want to close the editor and lose the changes?";
+        }
 
         internal static void Init(ProceduralGeneratorAsset pga)
         {
@@ -31,7 +36,6 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
             {
                 var window = CreateWindow<ToolWindow>(pga.name);
                 window.asset = pga;
-                window.saveChangesMessage = "You have unsaved changes. Do you really want to close the editor and lose the changes?";
                 window.Show();
             }
         }
@@ -73,7 +77,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
             LoadAsset();
         }
 
-        internal void LoadAsset()
+        public void LoadAsset()
         {
             var root = rootVisualElement.Q<RootElement>();
             root.Clear();
@@ -159,7 +163,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
             }
         }
 
-        private void AddNode(Node newNode, List<string> data)
+        public void AddNode(Node newNode, List<string> data)
         {
             var root = rootVisualElement.Q<RootElement>();
             newNode.SetRootElement(root, data ?? new List<string>());
@@ -173,7 +177,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
         }
     }
 
-    internal class RootElement: VisualElement
+    public class RootElement: VisualElement
     {
         public readonly ToolWindow Window;
         public RootElement(ToolWindow window)

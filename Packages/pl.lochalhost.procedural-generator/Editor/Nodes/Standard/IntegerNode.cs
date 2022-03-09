@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard
 {
     [NodeName("Standard/Integer/Basic")]
-    internal class IntegerNode : Node
+    public class IntegerNode : Node
     {
         private readonly IntegerField field = new IntegerField();
 

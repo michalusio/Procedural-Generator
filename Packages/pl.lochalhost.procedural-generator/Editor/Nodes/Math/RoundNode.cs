@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math
 {
     [NodeName("Math/Round")]
-    internal class RoundNode : Node
+    public class RoundNode : Node
     {
         private enum RoundingMode
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices
 {
     [NodeName("Matrices/Scale")]
-    internal class ScaleNode : Node
+    public class ScaleNode : Node
     {
         public ScaleNode(): base("Scale")
         {

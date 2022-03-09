@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
 {
     [NodeName("Meshes/Subdivision")]
-    internal class SubdivisionNode : Node
+    public class SubdivisionNode : Node
     {
         private enum SubdivisionType
         {

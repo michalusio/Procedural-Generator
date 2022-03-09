@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Models
 {
     [NodeName("Models/Sphere")]
-    internal class SphereNode : Node
+    public class SphereNode : Node
     {
         public SphereNode(): base("Sphere")
         {

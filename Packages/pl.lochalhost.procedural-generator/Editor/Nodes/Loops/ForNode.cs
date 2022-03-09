@@ -13,7 +13,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops
     }
 
     [NodeName("Loops/For/Start")]
-    internal class ForStartNode : Node
+    public class ForStartNode : Node
     {
         public ForStartNode(): base("For Start")
         {
@@ -72,7 +72,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops
     }
 
     [NodeName("Loops/For/End")]
-    internal class ForEndNode : Node
+    public class ForEndNode : Node
     {
         private readonly Dictionary<int, object> items = new Dictionary<int, object>();
 

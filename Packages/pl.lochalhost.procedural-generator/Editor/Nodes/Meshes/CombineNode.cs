@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
 {
     [NodeName("Meshes/Combine")]
-    internal class CombineNode : Node
+    public class CombineNode : Node
     {
         public CombineNode(): base("Combine Models")
         {

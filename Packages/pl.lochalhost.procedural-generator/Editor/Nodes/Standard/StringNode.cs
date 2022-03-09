@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard
 {
     [NodeName("Standard/String")]
-    internal class StringNode : Node
+    public class StringNode : Node
     {
         private readonly TextField field = new TextField();
         public StringNode(): base("String")

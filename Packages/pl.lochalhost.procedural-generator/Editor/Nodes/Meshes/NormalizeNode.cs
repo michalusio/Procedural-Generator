@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
 {
     [NodeName("Meshes/Normalize")]
-    internal class NormalizeNode : Node
+    public class NormalizeNode : Node
     {
         public NormalizeNode(): base("Normalize Vertices")
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices
 {
     [NodeName("Matrices/Rotation")]
-    internal class RotationNode : Node
+    public class RotationNode : Node
     {
         public RotationNode(): base("Rotation")
         {

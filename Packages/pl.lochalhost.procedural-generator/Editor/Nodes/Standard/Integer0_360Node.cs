@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard
 {
     [NodeName("Standard/Integer/0-360")]
-    internal class Integer0_360Node : Node
+    public class Integer0_360Node : Node
     {
         private readonly Label label = new Label("0");
         private readonly SliderInt field = new SliderInt

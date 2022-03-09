@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
 {
     [NodeName("Meshes/Clone")]
-    internal class CloneNode : Node
+    public class CloneNode : Node
     {
         public CloneNode(): base("Clone")
         {

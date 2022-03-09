@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -11,7 +10,7 @@ using UnityEngine.UIElements;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math
 {
     [NodeName("Math/Arithmetic")]
-    internal class ArithmeticNode : Node
+    public class ArithmeticNode : Node
     {
         private enum Operation
         {

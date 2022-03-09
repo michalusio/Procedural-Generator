@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
 {
-    internal class Connection : ISerializable<Connection, SerializableConnection>
+    public class Connection : ISerializable<Connection, SerializableConnection>
     {
         public NodeIn To { get; private set; }
         public NodeOut From { get; private set; }

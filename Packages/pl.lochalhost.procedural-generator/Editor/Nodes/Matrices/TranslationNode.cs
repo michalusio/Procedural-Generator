@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices
 {
     [NodeName("Matrices/Translation")]
-    internal class TranslationNode : Node
+    public class TranslationNode : Node
     {
         public TranslationNode(): base("Translation")
         {
