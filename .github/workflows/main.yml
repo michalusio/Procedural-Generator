@@ -8,8 +8,29 @@ on:
   workflow_dispatch:
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      code: ${{ steps.filter.outputs.code }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+            filters: |
+              code:
+                - 'Assets/**'
+                - 'Packages/**'
+                - 'ProjectSettings/**'
+                - 'UserSettings/**'
+                - '.github/workflows/main.yml'
+
   build:
     name: Build my project ✨
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
