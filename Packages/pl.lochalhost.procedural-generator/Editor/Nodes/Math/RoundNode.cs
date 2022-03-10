@@ -10,7 +10,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math
     [NodeName("Math/Round")]
     public class RoundNode : Node
     {
-        private enum RoundingMode
+        public enum RoundingMode
         {
             Floor,
             Round,
