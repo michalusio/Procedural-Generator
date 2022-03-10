@@ -56,13 +56,13 @@ namespace Packages.pl.lochalhost.procedural_generator.Runtime
                 freeInputs
                     .Select(x => {
                         var socket = assetNodeTypes[x.Item1].Inputs.ElementAt(x.Item2);
-                        return new NodeInOutDescription(x.Item1, x.Item2, socket.Item2, socket.Item3, socket.Item1);
+                        return new NodeInOutDescription(x.Item1, x.Item2, socket.Type, socket.Multi, socket.Label);
                     })
                     .ToList(),
                 freeOutputs
                     .Select(x => {
                         var socket = assetNodeTypes[x.Item1].Outputs.ElementAt(x.Item2);
-                        return new NodeInOutDescription(x.Item1, x.Item2, socket.Item2, socket.Item3, socket.Item1);
+                        return new NodeInOutDescription(x.Item1, x.Item2, socket.Type, socket.Multi, socket.Label);
                     })
                     .ToList()
             );

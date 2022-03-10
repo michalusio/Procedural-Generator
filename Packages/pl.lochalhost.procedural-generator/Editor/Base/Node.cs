@@ -11,21 +11,19 @@ using UnityEngine.UIElements;
 
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
 {
-    public abstract class Node: VisualElement, ISerializable<Node, SerializableNode>, INode
+    public abstract class Node: VisualElement, ISerializable<SerializableNode>, INode
     {
         public IList<NodeIn> Inputs => InNodes.Nodes;
         public IList<NodeOut> Outputs => OutNodes.Nodes;
-
-        IEnumerable<(string, Type, bool)> INode.Inputs => Inputs.Select(i => (i.Label, i.Type, i.Multi));
-
-        IEnumerable<(string, Type, bool)> INode.Outputs => Outputs.Select(i => (i.Label, i.Type, i.Multi));
+        IEnumerable<INodeInOut> INode.Inputs => Inputs;
+        IEnumerable<INodeInOut> INode.Outputs => Outputs;
 
         private readonly NodeGroup<NodeIn> InNodes;
         private readonly NodeGroup<NodeOut> OutNodes;
 
         protected RootElement Root { get; private set; }
 
-        public Node(string label)
+        protected Node(string label)
         {
             InNodes = new NodeGroup<NodeIn>(this);
             OutNodes = new NodeGroup<NodeOut>(this);
@@ -45,7 +43,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             {
                 OutNodes.AddNode(node);
             }
-            style.minHeight = 24 + Mathf.Max(InNodes.Nodes.Count, OutNodes.Nodes.Count) * 14;
+            RecalculateMinHeight();
         }
 
         internal void SetRootElement(RootElement root, List<string> data)
@@ -61,34 +59,29 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
         protected internal virtual void OnOutputLinked(Connection connection) { }
         protected internal virtual void OnOutputUnlinked(Connection connection) { }
 
-        private void RemoveNode()
-        {
-            RemoveFromHierarchy();
-            InNodes.Clear();
-            OutNodes.Clear();
-            Root.Window.Nodes.Remove(this);
-            Root.Window.SetUnsavedChanges();
-        }
-
         /// <summary>
         /// This method should provide all the inputs and outputs that should be shown for the node
         /// </summary>
         /// <returns>The declaration of all inputs and outputs</returns>
         protected abstract (List<NodeIn>, List<NodeOut>) SetupSockets();
+
         /// <summary>
         /// Called when the node's input have been changed. Use it to recalculate the outputs, then call <see cref="MarkAsChanged">MarkAsChanged()</see>
         /// </summary>
         public virtual void Recalculate() { }
+
         /// <summary>
         /// Called when the node is loaded, allowing to load custom data like control values
         /// </summary>
         /// <param name="data">The data saved for this node</param>
         protected virtual void LoadData(List<string> data) { }
+
         /// <summary>
         /// Called when the node is to be saved, allowing to save custom data like control values
         /// </summary>
         /// <returns>The data that should be saved for this node</returns>
         protected virtual List<string> SaveData() { return new List<string>(); }
+
         /// <summary>
         /// Clears the inputs and outputs of the node and calls <see cref="SetupSockets">SetupSockets()</see> again
         /// </summary>
@@ -105,8 +98,9 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             {
                 OutNodes.AddNode(node);
             }
-            style.minHeight = 24 + Mathf.Max(InNodes.Nodes.Count, OutNodes.Nodes.Count) * 14;
+            RecalculateMinHeight();
         }
+
         /// <summary>
         /// Marks the node as having changed the outputs. Passes the changes to the nodes connected to the outputs.
         /// </summary>
@@ -137,17 +131,30 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             };
         }
 
+        private void RemoveNode()
+        {
+            RemoveFromHierarchy();
+            InNodes.Clear();
+            OutNodes.Clear();
+            Root.Window.Nodes.Remove(this);
+            Root.Window.SetUnsavedChanges();
+        }
+
+        private void RecalculateMinHeight()
+        {
+            style.minHeight = 24 + Mathf.Max(InNodes.Nodes.Count, OutNodes.Nodes.Count) * 14;
+        }
+
         internal class NodeHeader : VisualElement
         {
             public NodeHeader(string label)
             {
                 Add(new Label(label));
                 this.AddManipulator(new Dragger());
-                var exit = new Button(() => (parent as Node).RemoveNode())
+                Add(new Button(() => (parent as Node).RemoveNode())
                 {
                     text = "X"
-                };
-                Add(exit);
+                });
             }
         }
 
@@ -215,11 +222,11 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
         }
     }
 
-    public class NodeInOut : VisualElement
+    public class NodeInOut : VisualElement, INodeInOut
     {
         public readonly ObservableCollection<Connection> Connections = new ObservableCollection<Connection>();
         public Node Node { get; private set; }
-        public readonly string Label;
+        public string Label { get; private set; }
 
         private Type type;
         public Type Type
@@ -234,7 +241,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             }
         }
 
-        public readonly bool Multi;
+        public bool Multi { get; private set; }
         private object value;
         public object Value
         {
