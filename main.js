@@ -228,7 +228,7 @@ var assemblies = [
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Connection", "rp": "lochalhost.procedural_generator.Editor_Connection.html", "cl": 0, "ucl": 84, "cal": 84, "tl": 129, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Dragger", "rp": "lochalhost.procedural_generator.Editor_Dragger.html", "cl": 10, "ucl": 46, "cal": 56, "tl": 88, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.MeshDisplay", "rp": "lochalhost.procedural_generator.Editor_MeshDisplay.html", "cl": 0, "ucl": 65, "cal": 65, "tl": 103, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Node", "rp": "lochalhost.procedural_generator.Editor_Node.html", "cl": 49, "ucl": 36, "cal": 85, "tl": 332, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Node", "rp": "lochalhost.procedural_generator.Editor_Node.html", "cl": 51, "ucl": 34, "cal": 85, "tl": 332, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.NodeIn", "rp": "lochalhost.procedural_generator.Editor_NodeIn.html", "cl": 5, "ucl": 11, "cal": 16, "tl": 332, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.NodeInOut", "rp": "lochalhost.procedural_generator.Editor_NodeInOut.html", "cl": 39, "ucl": 12, "cal": 51, "tl": 332, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.NodeNameAttribute", "rp": "lochalhost.procedural_generator.Editor_NodeNameAttribute.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 14, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
@@ -238,16 +238,16 @@ var assemblies = [
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.SocketClicker", "rp": "lochalhost.procedural_generator.Editor_SocketClicker.html", "cl": 8, "ucl": 42, "cal": 50, "tl": 78, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.SocketDisconnector", "rp": "lochalhost.procedural_generator.Editor_SocketDisconnector.html", "cl": 7, "ucl": 12, "cal": 19, "tl": 34, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Subdivision", "rp": "lochalhost.procedural_generator.Editor_Subdivision.html", "cl": 0, "ucl": 37, "cal": 37, "tl": 77, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Extensions", "rp": "lochalhost.procedural_generator.Editor_Extensions.html", "cl": 15, "ucl": 30, "cal": 45, "tl": 98, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Extensions", "rp": "lochalhost.procedural_generator.Editor_Extensions.html", "cl": 17, "ucl": 28, "cal": 45, "tl": 98, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.DisplayNode", "rp": "lochalhost.procedural_generator.Editor_DisplayNode.html", "cl": 0, "ucl": 30, "cal": 30, "tl": 62, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode", "rp": "lochalhost.procedural_generator.Editor_GroupNode.html", "cl": 0, "ucl": 63, "cal": 63, "tl": 106, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops.ForEndNode", "rp": "lochalhost.procedural_generator.Editor_ForEndNode.html", "cl": 0, "ucl": 46, "cal": 46, "tl": 149, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops.ForStartNode", "rp": "lochalhost.procedural_generator.Editor_ForStartNode.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 149, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops.RangeNode", "rp": "lochalhost.procedural_generator.Editor_RangeNode.html", "cl": 0, "ucl": 11, "cal": 11, "tl": 39, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.ArithmeticNode", "rp": "lochalhost.procedural_generator.Editor_ArithmeticNode.html", "cl": 41, "ucl": 2, "cal": 43, "tl": 131, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.CombineNode", "rp": "lochalhost.procedural_generator.Editor_CombineNode.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 45, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.IntegerToFloatNode", "rp": "lochalhost.procedural_generator.Editor_IntegerToFloatNode.html", "cl": 0, "ucl": 11, "cal": 11, "tl": 37, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.RoundNode", "rp": "lochalhost.procedural_generator.Editor_RoundNode.html", "cl": 0, "ucl": 27, "cal": 27, "tl": 81, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.CombineNode", "rp": "lochalhost.procedural_generator.Editor_CombineNode.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 45, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.IntegerToFloatNode", "rp": "lochalhost.procedural_generator.Editor_IntegerToFloatNode.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 37, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.RoundNode", "rp": "lochalhost.procedural_generator.Editor_RoundNode.html", "cl": 27, "ucl": 0, "cal": 27, "tl": 81, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.RotationNode", "rp": "lochalhost.procedural_generator.Editor_RotationNode.html", "cl": 0, "ucl": 13, "cal": 13, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.ScaleNode", "rp": "lochalhost.procedural_generator.Editor_ScaleNode.html", "cl": 0, "ucl": 13, "cal": 13, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.TranslationNode", "rp": "lochalhost.procedural_generator.Editor_TranslationNode.html", "cl": 0, "ucl": 13, "cal": 13, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
@@ -304,13 +304,6 @@ var riskHotspots = [
       { "value": 240, "exceeded": true },
     ]},
   {
-    "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Extensions", "reportPath": "lochalhost.procedural_generator.Editor_Extensions.html", "methodName": "static System.String Packages.pl.lochalhost.procedural_generator.Editor.Extensions::NatifyName(System.String)", "methodShortName": "NatifyName(...)", "fileIndex": 0, "line": 74,
-    "metrics": [
-      { "value": 21, "exceeded": true },
-      { "value": 0, "exceeded": false },
-      { "value": 151.69, "exceeded": true },
-    ]},
-  {
     "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Base.BezierElement", "reportPath": "lochalhost.procedural_generator.Editor_BezierElement.html", "methodName": "BezierPoints()", "methodShortName": "BezierPoints()", "fileIndex": 0, "line": 158,
     "metrics": [
       { "value": 11, "exceeded": false },
@@ -351,6 +344,13 @@ var riskHotspots = [
       { "value": 9, "exceeded": false },
       { "value": 0, "exceeded": false },
       { "value": 90, "exceeded": true },
+    ]},
+  {
+    "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Extensions", "reportPath": "lochalhost.procedural_generator.Editor_Extensions.html", "methodName": "static System.String Packages.pl.lochalhost.procedural_generator.Editor.Extensions::NatifyName(System.String)", "methodShortName": "NatifyName(...)", "fileIndex": 0, "line": 74,
+    "metrics": [
+      { "value": 21, "exceeded": true },
+      { "value": 0, "exceeded": false },
+      { "value": 76.12, "exceeded": true },
     ]},
   {
     "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode", "reportPath": "lochalhost.procedural_generator.Editor_GroupNode.html", "methodName": "System.Void Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode::ChangeInternalNode(UnityEngine.UIElements.ChangeEvent[Object])", "methodShortName": "ChangeInternalNode(...)", "fileIndex": 0, "line": 28,

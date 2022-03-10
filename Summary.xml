@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CoverageReport scope="Summary">
   <Summary>
-    <Generatedon>03/10/2022 - 21:26:56</Generatedon>
+    <Generatedon>03/10/2022 - 22:50:00</Generatedon>
     <Parser>OpenCoverParser</Parser>
     <Assemblies>2</Assemblies>
     <Classes>49</Classes>
     <Files>41</Files>
-    <Coveredlines>291</Coveredlines>
-    <Uncoveredlines>1238</Uncoveredlines>
+    <Coveredlines>348</Coveredlines>
+    <Uncoveredlines>1181</Uncoveredlines>
     <Coverablelines>1529</Coverablelines>
     <Totallines>3137</Totallines>
-    <Linecoverage>19</Linecoverage>
+    <Linecoverage>22.7</Linecoverage>
     <Coveredbranches>0</Coveredbranches>
     <Totalbranches>0</Totalbranches>
-    <Coveredmethods>60</Coveredmethods>
+    <Coveredmethods>73</Coveredmethods>
     <Totalmethods>243</Totalmethods>
-    <Methodcoverage>24.6</Methodcoverage>
+    <Methodcoverage>30</Methodcoverage>
   </Summary>
   <Coverage>
-    <Assembly name="lochalhost.procedural_generator.Editor" classes="47" coverage="19.3" coveredlines="289" coverablelines="1496" totallines="5045" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="59" totalmethods="240" methodcoverage="24.5">
+    <Assembly name="lochalhost.procedural_generator.Editor" classes="47" coverage="23.1" coveredlines="346" coverablelines="1496" totallines="5045" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="72" totalmethods="240" methodcoverage="30">
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.BezierElement" coverage="0" coveredlines="0" coverablelines="132" totallines="203" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="11" methodcoverage="0" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.Connection" coverage="0" coveredlines="0" coverablelines="84" totallines="129" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="14" methodcoverage="0" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.Dragger" coverage="17.8" coveredlines="10" coverablelines="56" totallines="88" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="6" methodcoverage="33.3" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.MeshDisplay" coverage="0" coveredlines="0" coverablelines="65" totallines="103" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="8" methodcoverage="0" />
-      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.Node" coverage="57.6" coveredlines="49" coverablelines="85" totallines="332" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="10" totalmethods="21" methodcoverage="47.6" />
+      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.Node" coverage="60" coveredlines="51" coverablelines="85" totallines="332" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="12" totalmethods="21" methodcoverage="57.1" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.NodeIn" coverage="31.2" coveredlines="5" coverablelines="16" totallines="332" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="2" methodcoverage="50" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.NodeInOut" coverage="76.4" coveredlines="39" coverablelines="51" totallines="332" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="12" totalmethods="13" methodcoverage="92.3" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.NodeNameAttribute" coverage="100" coveredlines="4" coverablelines="4" totallines="14" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="1" totalmethods="1" methodcoverage="100" />
@@ -33,16 +33,16 @@
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.SocketClicker" coverage="16" coveredlines="8" coverablelines="50" totallines="78" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="5" methodcoverage="40" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.SocketDisconnector" coverage="36.8" coveredlines="7" coverablelines="19" totallines="34" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="2" totalmethods="4" methodcoverage="50" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Base.Subdivision" coverage="0" coveredlines="0" coverablelines="37" totallines="77" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
-      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Extensions" coverage="33.3" coveredlines="15" coverablelines="45" totallines="98" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="7" methodcoverage="57.1" />
+      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Extensions" coverage="37.7" coveredlines="17" coverablelines="45" totallines="98" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="4" totalmethods="7" methodcoverage="57.1" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.DisplayNode" coverage="0" coveredlines="0" coverablelines="30" totallines="62" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode" coverage="0" coveredlines="0" coverablelines="63" totallines="106" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="6" methodcoverage="0" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops.ForEndNode" coverage="0" coveredlines="0" coverablelines="46" totallines="149" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="7" methodcoverage="0" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops.ForStartNode" coverage="0" coveredlines="0" coverablelines="28" totallines="149" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops.RangeNode" coverage="0" coveredlines="0" coverablelines="11" totallines="39" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.ArithmeticNode" coverage="95.3" coveredlines="41" coverablelines="43" totallines="131" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="7" totalmethods="7" methodcoverage="100" />
-      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.CombineNode" coverage="0" coveredlines="0" coverablelines="15" totallines="45" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
-      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.IntegerToFloatNode" coverage="0" coveredlines="0" coverablelines="11" totallines="37" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
-      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.RoundNode" coverage="0" coveredlines="0" coverablelines="27" totallines="81" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="5" methodcoverage="0" />
+      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.CombineNode" coverage="100" coveredlines="15" coverablelines="15" totallines="45" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="3" methodcoverage="100" />
+      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.IntegerToFloatNode" coverage="100" coveredlines="11" coverablelines="11" totallines="37" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="3" totalmethods="3" methodcoverage="100" />
+      <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.RoundNode" coverage="100" coveredlines="27" coverablelines="27" totallines="81" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="5" totalmethods="5" methodcoverage="100" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.RotationNode" coverage="0" coveredlines="0" coverablelines="13" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.ScaleNode" coverage="0" coveredlines="0" coverablelines="13" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
       <Class name="Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.TranslationNode" coverage="0" coveredlines="0" coverablelines="13" totallines="42" branchcoverage="" coveredbranches="0" totalbranches="0" coveredmethods="0" totalmethods="3" methodcoverage="0" />
