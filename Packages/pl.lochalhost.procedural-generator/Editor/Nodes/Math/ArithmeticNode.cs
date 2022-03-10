@@ -12,7 +12,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math
     [NodeName("Math/Arithmetic")]
     public class ArithmeticNode : Node
     {
-        private enum Operation
+        public enum Operation
         {
             Addition,
             Subtraction,
