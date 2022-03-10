@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math;
@@ -203,6 +204,29 @@ namespace lochalhost.procedural_generator.Editor.Tests
 
             // Assert
             Assert.AreEqual(output, node.Outputs[0].Value);
+        }
+
+        [Test]
+        public void ShouldThrowWhenGivenInvalidOperation()
+        {
+            // Arrange
+            var node = new ArithmeticNode();
+            
+            // Act && Assert
+            Assert.Throws(typeof(ArgumentException), () =>
+            {
+                Window.AddNode(node, new List<string> { "This is not an operation" });
+            });
+        }
+
+        [Test]
+        public void ShouldSaveTheOperationWhenSaved()
+        {
+            var node = new ArithmeticNode();
+            Window.AddNode(node, new List<string> { Operation.Division.ToString() });
+            Window.SaveChanges();
+
+            Assert.AreEqual(Operation.Division.ToString(), Window.asset.Nodes[0].Data[0]);
         }
     }
 }
