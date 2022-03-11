@@ -5,7 +5,7 @@ using Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math;
 using UnityEngine;
 using static Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.RoundNode;
 
-namespace lochalhost.procedural_generator.Editor.Tests
+namespace lochalhost.procedural_generator.Editor.Tests.Math
 {
     public class RoundNodeTests : NodeTestBase
     {

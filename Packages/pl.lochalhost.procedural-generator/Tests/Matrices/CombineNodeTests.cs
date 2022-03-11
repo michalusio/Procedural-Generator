@@ -4,7 +4,7 @@ using NUnit.Framework;
 using Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math;
 using UnityEngine;
 
-namespace lochalhost.procedural_generator.Editor.Tests
+namespace lochalhost.procedural_generator.Editor.Tests.Matrices
 {
     public class CombineNodeTests : NodeTestBase
     {

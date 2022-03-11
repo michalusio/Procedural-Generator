@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math;
 
-namespace lochalhost.procedural_generator.Editor.Tests
+namespace lochalhost.procedural_generator.Editor.Tests.Math
 {
     public class IntegerToFloatNodeTests : NodeTestBase
     {

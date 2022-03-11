@@ -3,51 +3,51 @@ using NUnit.Framework;
 using Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices;
 using UnityEngine;
 
-namespace lochalhost.procedural_generator.Editor.Tests
+namespace lochalhost.procedural_generator.Editor.Tests.Matrices
 {
-    public class RotationNodeTests : NodeTestBase
+    public class ScaleNodeTests : NodeTestBase
     {
         [Test]
         public void ShouldProduceCorrectMatrix()
         {
             // Arrange
-            var node = new RotationNode();
+            var node = new ScaleNode();
             Window.AddNode(node, new List<string> { });
-            node.Inputs[0].Value = 45f;
-            node.Inputs[1].Value = 30f;
-            node.Inputs[2].Value = 75f;
+            node.Inputs[0].Value = 1f;
+            node.Inputs[1].Value = 3f;
+            node.Inputs[2].Value = 5f;
 
             // Act
             node.Recalculate();
 
             // Assert
-            Assert.AreEqual(Matrix4x4.Rotate(Quaternion.Euler(45f, 30f, 75f)), node.Outputs[0].Value);
+            Assert.AreEqual(Matrix4x4.Scale(new Vector3(1f, 3f, 5f)), node.Outputs[0].Value);
         }
 
         [Test]
-        public void ShouldTreatUnassignedAsZero()
+        public void ShouldTreatUnassignedAsOne()
         {
             // Arrange
-            var node = new RotationNode();
+            var node = new ScaleNode();
             Window.AddNode(node, new List<string> { });
-            node.Inputs[0].Value = 45f;
+            node.Inputs[0].Value = 5f;
 
             // Act
             node.Recalculate();
 
             // Assert
-            Assert.AreEqual(Matrix4x4.Rotate(Quaternion.Euler(45f, 0f, 0f)), node.Outputs[0].Value);
+            Assert.AreEqual(Matrix4x4.Scale(new Vector3(5f, 1f, 1f)), node.Outputs[0].Value);
         }
 
         [Test]
         public void ShouldNotChangeOutputWhenRecalculatedTwice()
         {
             // Arrange
-            var node = new RotationNode();
+            var node = new ScaleNode();
             Window.AddNode(node, new List<string> { });
-            node.Inputs[0].Value = 45f;
-            node.Inputs[1].Value = 30f;
-            node.Inputs[2].Value = 75f;
+            node.Inputs[0].Value = 5f;
+            node.Inputs[1].Value = 3f;
+            node.Inputs[2].Value = 7f;
 
             // Act
             node.Recalculate();
@@ -61,7 +61,7 @@ namespace lochalhost.procedural_generator.Editor.Tests
         [Test]
         public void ShouldSaveNothingWhenSaved()
         {
-            var node = new RotationNode();
+            var node = new ScaleNode();
             Window.AddNode(node, new List<string> { });
             Window.SaveChanges();
 
