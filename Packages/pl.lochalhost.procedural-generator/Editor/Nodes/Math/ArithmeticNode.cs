@@ -53,11 +53,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math
         {
             switch (dropdown.value)
             {
-                case Operation.Addition:
-                case Operation.Subtraction:
-                case Operation.Multiplication:
-                case Operation.Division:
-                case Operation.Atan:
+                default:
                     return v;
                 case Operation.SquareRoot:
                     return Mathf.Sqrt(v);
@@ -67,8 +63,6 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math
                     return Mathf.Cos(v);
                 case Operation.Tan:
                     return Mathf.Tan(v);
-                default:
-                    throw new ApplicationException();
             }
         }
 
@@ -86,13 +80,8 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math
                     return result / value;
                 case Operation.Atan:
                     return Mathf.Atan2(result, value);
-                case Operation.SquareRoot:
-                case Operation.Sin:
-                case Operation.Cos:
-                case Operation.Tan:
-                    return result;
                 default:
-                    throw new ApplicationException();
+                    return result;
             }
         }
 
