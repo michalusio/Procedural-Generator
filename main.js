@@ -248,9 +248,9 @@ var assemblies = [
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.CombineNode", "rp": "lochalhost.procedural_generator.Editor_CombineNode.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 45, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.IntegerToFloatNode", "rp": "lochalhost.procedural_generator.Editor_IntegerToFloatNode.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 37, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.RoundNode", "rp": "lochalhost.procedural_generator.Editor_RoundNode.html", "cl": 27, "ucl": 0, "cal": 27, "tl": 81, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.RotationNode", "rp": "lochalhost.procedural_generator.Editor_RotationNode.html", "cl": 0, "ucl": 13, "cal": 13, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.ScaleNode", "rp": "lochalhost.procedural_generator.Editor_ScaleNode.html", "cl": 0, "ucl": 13, "cal": 13, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.TranslationNode", "rp": "lochalhost.procedural_generator.Editor_TranslationNode.html", "cl": 0, "ucl": 13, "cal": 13, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.RotationNode", "rp": "lochalhost.procedural_generator.Editor_RotationNode.html", "cl": 13, "ucl": 0, "cal": 13, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.ScaleNode", "rp": "lochalhost.procedural_generator.Editor_ScaleNode.html", "cl": 13, "ucl": 0, "cal": 13, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.TranslationNode", "rp": "lochalhost.procedural_generator.Editor_TranslationNode.html", "cl": 13, "ucl": 0, "cal": 13, "tl": 42, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes.ApplyMatrixNode", "rp": "lochalhost.procedural_generator.Editor_ApplyMatrixNode.html", "cl": 0, "ucl": 16, "cal": 16, "tl": 46, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes.CloneNode", "rp": "lochalhost.procedural_generator.Editor_CloneNode.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 58, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes.CombineNode", "rp": "lochalhost.procedural_generator.Editor_CombineNode.2.html", "cl": 0, "ucl": 22, "cal": 22, "tl": 51, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
@@ -354,13 +354,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode", "reportPath": "lochalhost.procedural_generator.Editor_GroupNode.html", "methodName": "System.Void Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode::ChangeInternalNode(UnityEngine.UIElements.ChangeEvent[Object])", "methodShortName": "ChangeInternalNode(...)", "fileIndex": 0, "line": 28,
-    "metrics": [
-      { "value": 7, "exceeded": false },
-      { "value": 0, "exceeded": false },
-      { "value": 56, "exceeded": true },
-    ]},
-  {
-    "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.ScaleNode", "reportPath": "lochalhost.procedural_generator.Editor_ScaleNode.html", "methodName": "System.Void Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Matrices.ScaleNode::Recalculate()", "methodShortName": "Recalculate()", "fileIndex": 0, "line": 15,
     "metrics": [
       { "value": 7, "exceeded": false },
       { "value": 0, "exceeded": false },
