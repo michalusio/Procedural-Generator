@@ -1,5 +1,5 @@
 {
-    "name": "alhost.procedural_generator.Editor.Tests",
+    "name": "lochalhost.procedural_generator.Editor.Tests",
     "rootNamespace": "lochalhost.procedural_generator.Editor.Tests",
     "references": [
         "GUID:ad7c1f209a2af5e45b8591c0d76b4d84",
