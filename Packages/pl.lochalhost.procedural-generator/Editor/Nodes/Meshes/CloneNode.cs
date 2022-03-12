@@ -22,6 +22,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
                 var startingVertices = model.vertices;
                 var startingTriangles = model.triangles;
                 var startingNormals = model.normals;
+                var startingUVs = model.uv;
                 var matrices = new Matrix4x4[clones + 1];
                 matrices[0] = Matrix4x4.identity;
                 for (int i = 1; i < matrices.Length; i++)
@@ -33,7 +34,8 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
                 {
                     vertices = matrices.SelectMany(m => startingVertices.Select(v => m.MultiplyPoint3x4(v))).ToArray(),
                     triangles = matrices.SelectMany((_, i) => startingTriangles.Select(t => t + i * startingVertices.Length)).ToArray(),
-                    normals = matrices.SelectMany((m, i) => startingNormals.Select(n => m.MultiplyVector(n))).ToArray()
+                    normals = matrices.SelectMany((m, i) => startingNormals.Select(n => m.MultiplyVector(n))).ToArray(),
+                    uv = matrices.SelectMany((_, i) => startingUVs).ToArray()
                 };
                 MarkAsChanged();
             }

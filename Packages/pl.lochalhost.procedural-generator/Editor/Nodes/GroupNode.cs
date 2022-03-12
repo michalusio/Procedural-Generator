@@ -1,5 +1,4 @@
 ﻿using Packages.pl.lochalhost.procedural_generator.Editor.Base;
-using Packages.pl.lochalhost.procedural_generator.Editor.Packages.pl.lochalhost.procedural_generator.Editor;
 using Packages.pl.lochalhost.procedural_generator.Runtime;
 using System.Collections.Generic;
 using System.Linq;
