@@ -5,12 +5,11 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
 {
     public class MeshDisplay : ImmediateModeElement
     {
-        private Mesh _mesh;
-
         private RenderTexture _texture;
         private static Material _meshMaterial;
         private static Material _wiremeshMaterial;
 
+        private Mesh _mesh;
         public Mesh Mesh
         {
             get { return _mesh; }

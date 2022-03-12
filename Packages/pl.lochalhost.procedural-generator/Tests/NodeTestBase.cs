@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using Packages.pl.lochalhost.procedural_generator.Editor;
 using Packages.pl.lochalhost.procedural_generator.Runtime;
-using UnityEditor;
 using UnityEngine;
 
 namespace lochalhost.procedural_generator.Editor.Tests

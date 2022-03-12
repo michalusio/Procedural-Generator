@@ -22,7 +22,8 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
                 {
                     vertices = model.vertices.Select(v => matrix.MultiplyPoint3x4(v)).ToArray(),
                     triangles = model.triangles,
-                    normals = model.normals
+                    normals = model.normals,
+                    uv = model.uv
                 };
                 MarkAsChanged();
             }
