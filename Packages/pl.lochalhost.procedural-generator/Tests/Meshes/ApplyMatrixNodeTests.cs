@@ -4,7 +4,7 @@ using NUnit.Framework;
 using Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes;
 using UnityEngine;
 
-namespace lochalhost.procedural_generator.Editor.Tests.Matrices
+namespace lochalhost.procedural_generator.Editor.Tests.Meshes
 {
     public class ApplyMatrixNodeTests : NodeTestBase
     {

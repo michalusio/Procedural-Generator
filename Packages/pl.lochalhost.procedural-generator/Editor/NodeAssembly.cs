@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Packages.pl.lochalhost.procedural_generator.Editor.Packages.pl.lochalhost.procedural_generator.Editor
+namespace Packages.pl.lochalhost.procedural_generator.Editor
 {
     public static class NodeAssembly
     {
