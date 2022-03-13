@@ -237,7 +237,7 @@ var assemblies = [
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.NodeSocket", "rp": "lochalhost.procedural_generator.Editor_NodeSocket.html", "cl": 17, "ucl": 3, "cal": 20, "tl": 332, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.SocketClicker", "rp": "lochalhost.procedural_generator.Editor_SocketClicker.html", "cl": 8, "ucl": 42, "cal": 50, "tl": 78, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.SocketDisconnector", "rp": "lochalhost.procedural_generator.Editor_SocketDisconnector.html", "cl": 7, "ucl": 12, "cal": 19, "tl": 34, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Subdivision", "rp": "lochalhost.procedural_generator.Editor_Subdivision.html", "cl": 0, "ucl": 37, "cal": 37, "tl": 77, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Subdivision", "rp": "lochalhost.procedural_generator.Editor_Subdivision.html", "cl": 39, "ucl": 0, "cal": 39, "tl": 80, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Extensions", "rp": "lochalhost.procedural_generator.Editor_Extensions.html", "cl": 17, "ucl": 28, "cal": 45, "tl": 98, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.NodeAssembly", "rp": "lochalhost.procedural_generator.Editor_NodeAssembly.html", "cl": 16, "ucl": 3, "cal": 19, "tl": 41, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.DisplayNode", "rp": "lochalhost.procedural_generator.Editor_DisplayNode.html", "cl": 0, "ucl": 30, "cal": 30, "tl": 62, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
@@ -256,7 +256,7 @@ var assemblies = [
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes.CloneNode", "rp": "lochalhost.procedural_generator.Editor_CloneNode.html", "cl": 30, "ucl": 0, "cal": 30, "tl": 60, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes.CombineNode", "rp": "lochalhost.procedural_generator.Editor_CombineNode.2.html", "cl": 23, "ucl": 0, "cal": 23, "tl": 51, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes.NormalizeNode", "rp": "lochalhost.procedural_generator.Editor_NormalizeNode.html", "cl": 16, "ucl": 0, "cal": 16, "tl": 45, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes.SubdivisionNode", "rp": "lochalhost.procedural_generator.Editor_SubdivisionNode.html", "cl": 0, "ucl": 45, "cal": 45, "tl": 100, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes.SubdivisionNode", "rp": "lochalhost.procedural_generator.Editor_SubdivisionNode.html", "cl": 34, "ucl": 10, "cal": 44, "tl": 99, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Models.CubeNode", "rp": "lochalhost.procedural_generator.Editor_CubeNode.html", "cl": 0, "ucl": 6, "cal": 6, "tl": 28, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Models.HeightmapNode", "rp": "lochalhost.procedural_generator.Editor_HeightmapNode.html", "cl": 0, "ucl": 29, "cal": 29, "tl": 67, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Models.PlaneNode", "rp": "lochalhost.procedural_generator.Editor_PlaneNode.html", "cl": 0, "ucl": 6, "cal": 6, "tl": 28, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
@@ -295,13 +295,6 @@ var riskHotspots = [
       { "value": 18, "exceeded": true },
       { "value": 0, "exceeded": false },
       { "value": 342, "exceeded": true },
-    ]},
-  {
-    "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Subdivision", "reportPath": "lochalhost.procedural_generator.Editor_Subdivision.html", "methodName": "SubdivideTriangle()", "methodShortName": "SubdivideTriangle()", "fileIndex": 0, "line": 57,
-    "metrics": [
-      { "value": 15, "exceeded": false },
-      { "value": 0, "exceeded": false },
-      { "value": 240, "exceeded": true },
     ]},
   {
     "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Base.BezierElement", "reportPath": "lochalhost.procedural_generator.Editor_BezierElement.html", "methodName": "BezierPoints()", "methodShortName": "BezierPoints()", "fileIndex": 0, "line": 158,
@@ -361,20 +354,6 @@ var riskHotspots = [
     ]},
   {
     "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Base.BezierElement", "reportPath": "lochalhost.procedural_generator.Editor_BezierElement.html", "methodName": "System.Void Packages.pl.lochalhost.procedural_generator.Editor.Base.BezierElement::ImmediateRepaint()", "methodShortName": "ImmediateRepaint()", "fileIndex": 0, "line": 68,
-    "metrics": [
-      { "value": 6, "exceeded": false },
-      { "value": 0, "exceeded": false },
-      { "value": 42, "exceeded": true },
-    ]},
-  {
-    "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Subdivision", "reportPath": "lochalhost.procedural_generator.Editor_Subdivision.html", "methodName": "static UnityEngine.Mesh Packages.pl.lochalhost.procedural_generator.Editor.Base.Subdivision::Simple(UnityEngine.Mesh)", "methodShortName": "Simple(...)", "fileIndex": 0, "line": 33,
-    "metrics": [
-      { "value": 6, "exceeded": false },
-      { "value": 0, "exceeded": false },
-      { "value": 42, "exceeded": true },
-    ]},
-  {
-    "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Subdivision", "reportPath": "lochalhost.procedural_generator.Editor_Subdivision.html", "methodName": "GetEdges()", "methodShortName": "GetEdges()", "fileIndex": 0, "line": 70,
     "metrics": [
       { "value": 6, "exceeded": false },
       { "value": 0, "exceeded": false },
