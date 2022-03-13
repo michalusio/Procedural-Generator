@@ -32,6 +32,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
         internal static Mesh Simple(Mesh mesh)
         {
             var oldVertices = mesh.vertices;
+            var oldUVs = mesh.uv;
             var oldNormals = mesh.normals;
             var oldTriangles = mesh.triangles.GroupInto(3).ToList();
             var edges = oldTriangles
@@ -42,18 +43,20 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             var newEdgeData = edges.Select((e, i) => (e, i)).ToDictionary(edge => edge.e, edge => (
                 Index: edge.i + oldVertices.Length,
                 Vertex: (oldVertices[edge.e.A] + oldVertices[edge.e.B]) / 2,
-                Normal: (oldNormals[edge.e.A] + oldNormals[edge.e.B]) / 2
+                Normal: (oldNormals[edge.e.A] + oldNormals[edge.e.B]) / 2,
+                UV: (oldUVs[edge.e.A] + oldUVs[edge.e.B]) / 2
             ));
 
             return new Mesh
             {
                 vertices = oldVertices.Concat(newEdgeData.Select(e => e.Value.Vertex)).ToArray(),
                 normals = oldNormals.Concat(newEdgeData.Select(e => e.Value.Normal)).ToArray(),
-                triangles = oldTriangles.SelectMany(t => SubdivideTriangle(t, newEdgeData)).ToArray()
+                triangles = oldTriangles.SelectMany(t => SubdivideTriangle(t, newEdgeData)).ToArray(),
+                uv = oldUVs.Concat(newEdgeData.Select(e => e.Value.UV)).ToArray()
             };
         }
 
-        private static IEnumerable<int> SubdivideTriangle(int[] array, Dictionary<Edge, (int Index, Vector3 Vertex, Vector3 Normal)> newEdgeData)
+        private static IEnumerable<int> SubdivideTriangle(int[] array, Dictionary<Edge, (int Index, Vector3 Vertex, Vector3 Normal, Vector2 UV)> newEdgeData)
         {
             var dataA = newEdgeData[new Edge(array[0], array[1])].Index;
             var dataB = newEdgeData[new Edge(array[1], array[2])].Index;
