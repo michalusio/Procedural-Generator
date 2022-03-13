@@ -21,13 +21,14 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
                 var vertexCounts = new int[models.Count];
                 for (int i = 1; i < models.Count; i++)
                 {
-                    vertexCounts[i] = vertexCounts[i - 1] + models[i].vertexCount;
+                    vertexCounts[i] = vertexCounts[i - 1] + models[i - 1].vertexCount;
                 }
                 Outputs[0].Value = new Mesh
                 {
                     vertices = models.SelectMany(m => m.vertices).ToArray(),
                     triangles = models.SelectMany((m, i) => m.triangles.Select(t => t + vertexCounts[i])).ToArray(),
-                    normals = models.SelectMany((m, i) => m.normals).ToArray()
+                    normals = models.SelectMany((m, i) => m.normals).ToArray(),
+                    uv = models.SelectMany((m, i) => m.uv).ToArray()
                 };
                 MarkAsChanged();
             }
