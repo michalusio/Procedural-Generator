@@ -10,7 +10,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
     [NodeName("Meshes/Subdivision")]
     public class SubdivisionNode : Node
     {
-        private enum SubdivisionType
+        public enum SubdivisionType
         {
             Simple
         }
@@ -36,7 +36,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
         private void IterationValueChanged(ChangeEvent<int> evt)
         {
             var value = evt.newValue;
-            if (value > 0 && value < 6)
+            if (value >= 0 && value < 6)
             {
                 Recalculate();
                 Root.Window.SetUnsavedChanges();

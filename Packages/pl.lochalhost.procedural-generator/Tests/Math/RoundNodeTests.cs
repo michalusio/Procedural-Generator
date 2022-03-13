@@ -8,68 +8,23 @@ namespace lochalhost.procedural_generator.Editor.Tests.Math
 {
     public class RoundNodeTests : NodeTestBase
     {
-        [Test]
-        public void ShouldRoundCeil()
+        [TestCase(RoundingMode.Ceil, 4.32f, 5)]
+        [TestCase(RoundingMode.Floor, 4.32f, 4)]
+        [TestCase(RoundingMode.Round, 4.32f, 4)]
+        [TestCase(RoundingMode.Round, 4.72f, 5)]
+        public void ShouldRound(RoundingMode roundingMode, float value, int result)
         {
             // Arrange
             var node = new RoundNode();
-            Window.AddNode(node, new List<string> { RoundingMode.Ceil.ToString() });
-            node.Inputs[0].Value = 4.32f;
+            Window.AddNode(node, new List<string> { roundingMode.ToString() });
+            node.Inputs[0].Value = value;
 
             // Act
             node.Recalculate();
 
             // Assert
             Assert.IsInstanceOf<int>(node.Outputs[0].Value);
-            Assert.AreEqual(5, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldRoundFloor()
-        {
-            // Arrange
-            var node = new RoundNode();
-            Window.AddNode(node, new List<string> { RoundingMode.Floor.ToString() });
-            node.Inputs[0].Value = 4.32f;
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.IsInstanceOf<int>(node.Outputs[0].Value);
-            Assert.AreEqual(4, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldRound1()
-        {
-            // Arrange
-            var node = new RoundNode();
-            Window.AddNode(node, new List<string> { RoundingMode.Round.ToString() });
-            node.Inputs[0].Value = 4.32f;
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.IsInstanceOf<int>(node.Outputs[0].Value);
-            Assert.AreEqual(4, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldRound2()
-        {
-            // Arrange
-            var node = new RoundNode();
-            Window.AddNode(node, new List<string> { RoundingMode.Round.ToString() });
-            node.Inputs[0].Value = 4.72f;
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.IsInstanceOf<int>(node.Outputs[0].Value);
-            Assert.AreEqual(5, node.Outputs[0].Value);
+            Assert.AreEqual(result, node.Outputs[0].Value);
         }
 
         [Test]
