@@ -238,7 +238,7 @@ var assemblies = [
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.SocketClicker", "rp": "lochalhost.procedural_generator.Editor_SocketClicker.html", "cl": 8, "ucl": 42, "cal": 50, "tl": 78, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.SocketDisconnector", "rp": "lochalhost.procedural_generator.Editor_SocketDisconnector.html", "cl": 7, "ucl": 12, "cal": 19, "tl": 34, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Base.Subdivision", "rp": "lochalhost.procedural_generator.Editor_Subdivision.html", "cl": 39, "ucl": 0, "cal": 39, "tl": 80, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Extensions", "rp": "lochalhost.procedural_generator.Editor_Extensions.html", "cl": 17, "ucl": 28, "cal": 45, "tl": 98, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Extensions", "rp": "lochalhost.procedural_generator.Editor_Extensions.html", "cl": 42, "ucl": 3, "cal": 45, "tl": 98, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.NodeAssembly", "rp": "lochalhost.procedural_generator.Editor_NodeAssembly.html", "cl": 16, "ucl": 3, "cal": 19, "tl": 41, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.DisplayNode", "rp": "lochalhost.procedural_generator.Editor_DisplayNode.html", "cl": 0, "ucl": 30, "cal": 30, "tl": 62, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode", "rp": "lochalhost.procedural_generator.Editor_GroupNode.html", "cl": 0, "ucl": 63, "cal": 63, "tl": 105, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
@@ -339,13 +339,6 @@ var riskHotspots = [
       { "value": 90, "exceeded": true },
     ]},
   {
-    "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Extensions", "reportPath": "lochalhost.procedural_generator.Editor_Extensions.html", "methodName": "static System.String Packages.pl.lochalhost.procedural_generator.Editor.Extensions::NatifyName(System.String)", "methodShortName": "NatifyName(...)", "fileIndex": 0, "line": 74,
-    "metrics": [
-      { "value": 21, "exceeded": true },
-      { "value": 0, "exceeded": false },
-      { "value": 76.12, "exceeded": true },
-    ]},
-  {
     "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode", "reportPath": "lochalhost.procedural_generator.Editor_GroupNode.html", "methodName": "System.Void Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode::ChangeInternalNode(UnityEngine.UIElements.ChangeEvent[Object])", "methodShortName": "ChangeInternalNode(...)", "fileIndex": 0, "line": 27,
     "metrics": [
       { "value": 7, "exceeded": false },
@@ -358,6 +351,13 @@ var riskHotspots = [
       { "value": 6, "exceeded": false },
       { "value": 0, "exceeded": false },
       { "value": 42, "exceeded": true },
+    ]},
+  {
+    "assembly": "lochalhost.procedural_generator.Editor", "class": "Packages.pl.lochalhost.procedural_generator.Editor.Extensions", "reportPath": "lochalhost.procedural_generator.Editor_Extensions.html", "methodName": "static System.String Packages.pl.lochalhost.procedural_generator.Editor.Extensions::NatifyName(System.String)", "methodShortName": "NatifyName(...)", "fileIndex": 0, "line": 74,
+    "metrics": [
+      { "value": 21, "exceeded": true },
+      { "value": 0, "exceeded": false },
+      { "value": 27.89, "exceeded": false },
     ]},
 ];
 
