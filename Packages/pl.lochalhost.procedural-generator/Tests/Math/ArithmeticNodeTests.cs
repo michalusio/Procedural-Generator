@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math;
 using UnityEngine;
@@ -9,164 +10,29 @@ namespace lochalhost.procedural_generator.Editor.Tests.Math
 {
     public class ArithmeticNodeTests : NodeTestBase
     {
-        [Test]
-        public void ShouldAddTwoNumbers()
+        [TestCase(Operation.Addition, 11f, 4f, 7f)]
+        [TestCase(Operation.Subtraction, -3f, 4f, 7f)]
+        [TestCase(Operation.Multiplication, 28f, 4f, 7f)]
+        [TestCase(Operation.Division, 4/7f, 4f, 7f)]
+        [TestCase(Operation.SquareRoot, 2f, 4f, 7f)]
+        [TestCase(Operation.Sin, 1f, Mathf.PI / 2, 7f)]
+        [TestCase(Operation.Cos, -1f, Mathf.PI, 7f)]
+        [TestCase(Operation.Tan, 1f, Mathf.PI / 4, 7f)]
+        [TestCase(Operation.Atan, Mathf.PI / 2, 1f, 0f)]
+        [TestCase(Operation.Atan, 0f, 0f, 1f)]
+        public void ShouldCalculate(Operation operation, float result, float value1, params float[] value2)
         {
             // Arrange
             var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.Addition.ToString() });
-            node.Inputs[0].Value = 4f;
-            node.Inputs[1].Value = new List<object> { 7f };
+            Window.AddNode(node, new List<string> { operation.ToString() });
+            node.Inputs[0].Value = value1;
+            node.Inputs[1].Value = value2.OfType<object>().ToList();
 
             // Act
             node.Recalculate();
 
             // Assert
-            Assert.AreEqual(11f, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldSubtractTwoNumbers()
-        {
-            // Arrange
-            var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.Subtraction.ToString() });
-            node.Inputs[0].Value = 4f;
-            node.Inputs[1].Value = new List<object> { 7f };
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.AreEqual(-3f, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldMultiplyTwoNumbers()
-        {
-            // Arrange
-            var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.Multiplication.ToString() });
-            node.Inputs[0].Value = 4f;
-            node.Inputs[1].Value = new List<object> { 7f };
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.AreEqual(28f, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldDivideTwoNumbers()
-        {
-            // Arrange
-            var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.Division.ToString() });
-            node.Inputs[0].Value = 4f;
-            node.Inputs[1].Value = new List<object> { 7f };
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.AreEqual(4/7f, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldGetSquareRoot()
-        {
-            // Arrange
-            var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.SquareRoot.ToString() });
-            node.Inputs[0].Value = 4f;
-            node.Inputs[1].Value = new List<object> { 7f };
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.AreEqual(2f, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldGetSine()
-        {
-            // Arrange
-            var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.Sin.ToString() });
-            node.Inputs[0].Value = Mathf.PI/2;
-            node.Inputs[1].Value = new List<object> { 7f };
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.AreEqual(1f, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldGetCosine()
-        {
-            // Arrange
-            var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.Cos.ToString() });
-            node.Inputs[0].Value = Mathf.PI;
-            node.Inputs[1].Value = new List<object> { 7f };
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.AreEqual(-1f, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldGetTangens()
-        {
-            // Arrange
-            var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.Tan.ToString() });
-            node.Inputs[0].Value = Mathf.PI / 4;
-            node.Inputs[1].Value = new List<object> { 7f };
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.AreEqual(1f, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldGetArcusTangensUp()
-        {
-            // Arrange
-            var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.Atan.ToString() });
-            node.Inputs[0].Value = 1f;
-            node.Inputs[1].Value = new List<object> { 0f };
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.AreEqual(Mathf.PI / 2, node.Outputs[0].Value);
-        }
-
-        [Test]
-        public void ShouldGetArcusTangensRight()
-        {
-            // Arrange
-            var node = new ArithmeticNode();
-            Window.AddNode(node, new List<string> { Operation.Atan.ToString() });
-            node.Inputs[0].Value = 0f;
-            node.Inputs[1].Value = new List<object> { 1f };
-
-            // Act
-            node.Recalculate();
-
-            // Assert
-            Assert.AreEqual(0f, node.Outputs[0].Value);
+            Assert.AreEqual(result, node.Outputs[0].Value);
         }
 
         [Test]

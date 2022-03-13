@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace Packages.pl.lochalhost.procedural_generator.Editor
 {
-    internal static class Extensions
+    public static class Extensions
     {
         public static void BorderColor(this IStyle style, StyleColor color)
         {
@@ -67,7 +67,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
             var typeDefinition = type.Name;
             var unmangledName = typeDefinition.Substring(0, typeDefinition.IndexOf("`"));
             
-            return NatifyName(unmangledName) + "<" + string.Join(",", genericArguments.Select(PrettyName)) + ">";
+            return NatifyName(unmangledName) + "<" + string.Join(", ", genericArguments.Select(PrettyName)) + ">";
         }
 
         private static string NatifyName(string unmangledName)
