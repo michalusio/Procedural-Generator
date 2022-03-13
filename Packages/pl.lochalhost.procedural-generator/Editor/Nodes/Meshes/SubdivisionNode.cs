@@ -48,21 +48,20 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
         {
             if (Inputs[0].Value is Mesh mesh)
             {
-                Mesh oldMesh = mesh;
                 Mesh newMesh;
                 for (int i = 0; i < field.value; i++)
                 {
                     switch (dropdown.value)
                     {
                         case SubdivisionType.Simple:
-                            newMesh = Subdivision.Simple(oldMesh);
+                            newMesh = Subdivision.Simple(mesh);
                             break;
                         default:
                             throw new ApplicationException();
                     }
-                    oldMesh = newMesh;
+                    mesh = newMesh;
                 }
-                Outputs[0].Value = oldMesh;
+                Outputs[0].Value = mesh;
                 MarkAsChanged();
             }
         }
