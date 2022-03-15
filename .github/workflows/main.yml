@@ -62,7 +62,9 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           testMode: EditMode
           customParameters: -EnableHeadlessMode -debugCodeOptimization -enableCodeCoverage -coverageOptions "generateHtmlReport;generateAdditionalMetrics;assemblyFilters:+lochalhost.procedural_generator.*,-lochalhost.procedural_generator.Editor.Tests"
-          
+      
+      - run: dotnet build /p:UseSharedCompilation=false
+      
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
 
