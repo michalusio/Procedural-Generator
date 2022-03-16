@@ -1,12 +1,12 @@
 name: CI
 
-concurrency: 
-  group: ${{ github.head_ref || github.ref }}
+concurrency:
+  group: ${{ github.ref }}
   cancel-in-progress: true
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ master ]
   pull_request:
   workflow_dispatch:
 
