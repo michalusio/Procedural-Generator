@@ -1,0 +1,122 @@
+name: Release
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      code: ${{ steps.filter.outputs.code }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+            filters: |
+              code:
+                - 'Assets/**'
+                - 'Packages/**'
+                - 'ProjectSettings/**'
+                - 'UserSettings/**'
+                - '.github/workflows/*.yml'
+
+  test:
+    name: Test
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+        
+      - name: Load Cache
+        uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          testMode: EditMode
+          customParameters: -EnableHeadlessMode -debugCodeOptimization -enableCodeCoverage -coverageOptions "generateHtmlReport;generateAdditionalMetrics;assemblyFilters:+lochalhost.procedural_generator.*,-lochalhost.procedural_generator.Editor.Tests"
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Code Coverage
+          path: CodeCoverage/Report
+
+  build:
+    name: Build
+    needs: changes
+    if: ${{ needs.changes.outputs.code == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+        
+      - name: Load Cache
+        uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      - name: Build project
+        uses: game-ci/unity-builder@v2.0.0-alpha-14
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          buildMethod: UnityBuilderAction.BuildScript.Build
+          targetPlatform: StandaloneLinux64
+          customParameters: -EnableHeadlessMode
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Package
+          path: build
+
+  release:
+    name: Release
+    needs: [ test, build ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Package Artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: Package
+          path: build
+          
+      - name: Download Code Coverage Artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: Code Coverage
+          path: codecov
+
+      - name: Deploy code coverage
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: docs
+          folder: codecov
