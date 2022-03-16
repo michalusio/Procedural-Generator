@@ -117,8 +117,6 @@ jobs:
         with:
           name: Code Coverage
           path: codecov
-    
-      - name: Create a Release
 
       - name: Deploy code coverage
         uses: JamesIves/github-pages-deploy-action@v4.2.5
