@@ -1,14 +1,14 @@
 name: CI
 
 concurrency: 
-  group: ${{ github.ref }}
+  group: ${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, develop ]
   workflow_dispatch:
 
 jobs:
@@ -64,13 +64,6 @@ jobs:
         with:
           name: Code Coverage
           path: CodeCoverage/Report
-          
-      - name: Deploy code coverage
-        if: ${{ github.event_name == 'push' }}
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
-        with:
-          branch: docs
-          folder: CodeCoverage/Report
 
   build:
     name: Build
@@ -106,3 +99,29 @@ jobs:
         with:
           name: Package
           path: build
+
+  release:
+    name: Release
+    needs: [ test, build ]
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Package Artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: Package
+          path: build
+          
+      - name: Download Code Coverage Artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: Code Coverage
+          path: codecov
+    
+      - name: Create a Release
+
+      - name: Deploy code coverage
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: docs
+          folder: codecov
