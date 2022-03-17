@@ -105,23 +105,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Download Package Artifact
-        uses: actions/download-artifact@v3.0.0
-        with:
-          name: Package
-          path: build
-          
-      - id: bump
-        uses: zwaldowski/match-label-action@v1
-        with:
-          allowed: major,minor,patch
-      - name: Create New Release
-        uses: zwaldowski/semver-release-action@v1
-        with:
-          bump: ${{ steps.bump.outputs.match }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          
+        
       - name: Download Code Coverage Artifact
         uses: actions/download-artifact@v3.0.0
         with:
@@ -133,3 +117,29 @@ jobs:
         with:
           branch: docs
           folder: codecov
+
+      - name: Download Package Artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: Package
+          path: build
+
+      - id: bump
+        uses: zwaldowski/match-label-action@v1
+        with:
+          allowed: major,minor,patch
+      - id: get_next_version
+        uses: zwaldowski/semver-release-action@v1
+        with:
+          dry_run: true
+          bump: ${{ steps.bump.outputs.match }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Creating Release
+        uses: djnicholson/release-action@v2.11
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-name: ${{ github.event.pull_request.title }}
+          tag-name: ${{ steps.get_next_version.outputs.version }}
+          asset-name: 'ProceduralGenerator.unitypackage'
+          file: 'build/ProceduralGenerator.unitypackage'
