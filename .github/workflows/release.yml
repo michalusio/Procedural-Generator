@@ -18,14 +18,6 @@ jobs:
     outputs:
       code: ${{ steps.filter.outputs.code }}
     steps:
-      - name: Set Release Status
-        uses: myrotvorets/set-commit-status-action@1.1.4
-        if: always()
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: pending
-          context: Releasing the package
-    
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -154,11 +146,3 @@ jobs:
           tag-name: ${{ steps.get_next_version.outputs.version }}
           asset-name: 'ProceduralGenerator.unitypackage'
           file: 'build/ProceduralGenerator.unitypackage'
-
-      - name: Set Release Status
-        uses: myrotvorets/set-commit-status-action@1.1.4
-        if: always()
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ job.status }}
-          context: Releasing the package
