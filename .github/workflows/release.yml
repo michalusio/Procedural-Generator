@@ -146,3 +146,11 @@ jobs:
           tag-name: ${{ steps.get_next_version.outputs.version }}
           asset-name: 'ProceduralGenerator.unitypackage'
           file: 'build/ProceduralGenerator.unitypackage'
+
+      - name: Set Release Status
+        uses: myrotvorets/set-commit-status-action@1.1.4
+        if: always()
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          context: Releasing the package
