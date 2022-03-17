@@ -2,15 +2,18 @@ name: Release
 
 concurrency:
   group: ${{ github.ref }}
-  cancel-in-progress: true
 
 on:
-  push:
-    branches: [ master ]
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'master'
   workflow_dispatch:
 
 jobs:
   changes:
+    if: ${{ github.event.pull_request.merged == 'true' }}
     runs-on: ubuntu-latest
     outputs:
       code: ${{ steps.filter.outputs.code }}
