@@ -128,11 +128,11 @@ jobs:
           path: build
 
       - id: bump
-        uses: zwaldowski/match-label-action@v1
+        uses: zwaldowski/match-label-action@v3
         with:
           allowed: major,minor,patch
       - id: get_next_version
-        uses: zwaldowski/semver-release-action@v1
+        uses: zwaldowski/semver-release-action@v2
         with:
           dry_run: true
           bump: ${{ steps.bump.outputs.match }}
