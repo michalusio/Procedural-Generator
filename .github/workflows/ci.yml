@@ -32,7 +32,7 @@ jobs:
   test:
     name: Test
     needs: changes
-    if: ${{ needs.changes.outputs.code == 'true' }}
+    if: needs.changes.outputs.code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -65,7 +65,7 @@ jobs:
   build:
     name: Build
     needs: changes
-    if: ${{ needs.changes.outputs.code == 'true' }}
+    if: needs.changes.outputs.code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
