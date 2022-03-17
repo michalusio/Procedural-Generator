@@ -112,12 +112,15 @@ jobs:
           name: Package
           path: build
           
-      - name: Release Package
-        uses: krogon/semver-release-action@master
+      - id: bump
+        uses: zwaldowski/match-label-action@v1
         with:
-          release_branch: master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          allowed: major,minor,patch
+      - name: Create New Release
+        uses: zwaldowski/semver-release-action@v1
+        with:
+          bump: ${{ steps.bump.outputs.match }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Download Code Coverage Artifact
         uses: actions/download-artifact@v3.0.0
