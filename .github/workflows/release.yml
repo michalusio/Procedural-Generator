@@ -150,7 +150,7 @@ jobs:
         with:
           draft: true
           body: |
-            ##${{ github.event.pull_request.title }}
+            ### ${{ github.event.pull_request.title }}
             
             ${{ github.event.pull_request.body }}
           files: 'build/ProceduralGenerator.unitypackage'
