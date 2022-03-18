@@ -137,14 +137,21 @@ jobs:
         with:
           name: Package
           path: build
+          
+      - name: Create Tag
+        uses: negz/create-tag@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: ${{ needs.changes.outputs.version }}
+          message: ${{ github.event.pull_request.title }}
 
-      - name: Creating Release
+      - name: Create Release
         uses: softprops/action-gh-release@v0.1.14
         with:
           draft: true
           body: |
-            ${{ github.event.pull_request.title }}
-            ""
+            ##${{ github.event.pull_request.title }}
+            
             ${{ github.event.pull_request.body }}
           files: 'build/ProceduralGenerator.unitypackage'
           fail_on_unmatched_files: true
