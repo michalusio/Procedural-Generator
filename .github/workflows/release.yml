@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       code: ${{ steps.filter.outputs.code }}
+      version: ${{ steps.get_next_version.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -32,6 +33,16 @@ jobs:
                 - 'ProjectSettings/**'
                 - 'UserSettings/**'
                 - '.github/workflows/*.yml'
+      - id: bump
+        uses: zwaldowski/match-label-action@v3
+        with:
+          allowed: major,minor,patch
+      - id: get_next_version
+        uses: zwaldowski/semver-release-action@v2
+        with:
+          dry_run: true
+          bump: ${{ steps.bump.outputs.match }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   test:
     name: Test
@@ -127,17 +138,6 @@ jobs:
           name: Package
           path: build
 
-      - id: bump
-        uses: zwaldowski/match-label-action@v3
-        with:
-          allowed: major,minor,patch
-      - id: get_next_version
-        uses: zwaldowski/semver-release-action@v2
-        with:
-          dry_run: true
-          bump: ${{ steps.bump.outputs.match }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Creating Release
         uses: softprops/action-gh-release@v0.1.14
         with:
@@ -145,5 +145,5 @@ jobs:
           body: ${{ join([github.event.pull_request.title, github.event.pull_request.body], '\n') }}
           files: 'build/ProceduralGenerator.unitypackage'
           fail_on_unmatched_files: true
-          tag_name: ${{ steps.get_next_version.outputs.version }}
+          tag_name: ${{ needs.changes.outputs.version }}
           token: ${{ secrets.GITHUB_TOKEN }}
