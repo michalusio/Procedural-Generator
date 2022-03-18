@@ -114,7 +114,7 @@ jobs:
 
   release:
     name: Release
-    needs: [ test, build ]
+    needs: [ changes, test, build ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -142,7 +142,10 @@ jobs:
         uses: softprops/action-gh-release@v0.1.14
         with:
           draft: true
-          body: ${{ format('{0}\n{1}', github.event.pull_request.title, github.event.pull_request.body) }}
+          body: |
+            ${{ github.event.pull_request.title }}
+            ""
+            ${{ github.event.pull_request.body }}
           files: 'build/ProceduralGenerator.unitypackage'
           fail_on_unmatched_files: true
           tag_name: ${{ needs.changes.outputs.version }}
