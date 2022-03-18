@@ -142,7 +142,7 @@ jobs:
         uses: softprops/action-gh-release@v0.1.14
         with:
           draft: true
-          body: ${{ github.event.pull_request.body }}
+          body: ${{ join([github.event.pull_request.title, github.event.pull_request.body], '\n') }}
           files: 'build/ProceduralGenerator.unitypackage'
           fail_on_unmatched_files: true
           tag_name: ${{ steps.get_next_version.outputs.version }}
