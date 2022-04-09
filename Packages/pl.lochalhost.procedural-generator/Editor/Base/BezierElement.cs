@@ -161,7 +161,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             var first = GetPoint(p0, p1, p2, p3, from);
             var last = GetPoint(p0, p1, p2, p3, to);
             
-            if ((first - last).sqrMagnitude > 15*15)
+            if ((first - last).sqrMagnitude > 10*10)
             {
                 foreach (var p in BezierPoints(p0, p1, p2, p3, from, middleT))
                 {

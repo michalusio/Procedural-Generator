@@ -27,7 +27,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard
             label.text = evt.newValue.ToString();
             MarkDirtyRepaint();
             MarkAsChanged();
-            Root.Window.SetUnsavedChanges();
+            SetUnsavedChanges();
         }
 
         protected override (List<NodeIn>, List<NodeOut>) SetupSockets()

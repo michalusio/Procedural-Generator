@@ -5,9 +5,8 @@ using Packages.pl.lochalhost.procedural_generator.Editor.Base;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using System.Linq;
-using System;
-using System.Reflection;
 using Packages.pl.lochalhost.procedural_generator.Runtime;
+using Packages.pl.lochalhost.procedural_generator.Editor.WindowUtilities;
 
 namespace Packages.pl.lochalhost.procedural_generator.Editor
 {
@@ -16,8 +15,6 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
         public ProceduralGeneratorAsset asset;
 
         private bool afterAssetLoad;
-
-        private List<(ConstructorInfo, string)> NodeTypes;
 
         public ToolWindow()
         {
@@ -42,27 +39,10 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
         public void OnEnable()
         {
             this.SetAntiAliasing(8);
+
             rootVisualElement.styleSheets.Add(Resources.Load<StyleSheet>("lochalhost-NodeStyling"));
-
-            var toolbar = new Toolbar();
-            rootVisualElement.Add(toolbar);
-
-            var saveButton = new ToolbarButton(SaveChanges)
-            {
-                text = "Save"
-            };
-            toolbar.Add(saveButton);
-
-            var nodeMenu = new ToolbarMenu
-            {
-                text = "Nodes"
-            };
-            BuildNodeMenu(nodeMenu.menu);
-            toolbar.Add(nodeMenu);
-
-            var root = new RootElement(this);
-            root.RegisterCallback<MouseUpEvent>(KillConnection);
-            rootVisualElement.Add(root);
+            rootVisualElement.Add(ToolbarBuilder.Build(SaveChanges, AddNode));
+            rootVisualElement.Add(new RootElement(this));
 
             if (asset)
             {
@@ -82,11 +62,11 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
             root.Clear();
             Nodes.Clear();
             Connections.Clear();
-            ongoingConnection = null;
+            OngoingConnection = null;
+            var nodeTypes = NodeAssembly.GetNodeMenuOptions().ToDictionary(n => n.Constructor.DeclaringType.FullName, n => n.Constructor);
             foreach (var node in asset.Nodes)
             {
-                var nodeConstructor = NodeTypes.Select(x => x.Item1).First(c => c.DeclaringType.FullName == node.NodeType);
-                var newNode = nodeConstructor.Invoke(null) as Node;
+                var newNode = nodeTypes[node.NodeType].Invoke(null) as Node;
                 newNode.style.top = node.Y;
                 newNode.style.left = node.X;
                 AddNode(newNode, node.Data);
@@ -115,7 +95,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
 
         public void OnDestroy()
         {
-            rootVisualElement[0].UnregisterCallback<MouseUpEvent>(KillConnection);
+            rootVisualElement.Q<RootElement>().OnDestroy();
         }
 
         public override void SaveChanges()
@@ -135,32 +115,11 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
             set
             {
                 ongoingConnection = value;
-                rootVisualElement.EnableInClassList("connection-from", ongoingConnection != null && ongoingConnection.From != null);
-                rootVisualElement.EnableInClassList("connection-to", ongoingConnection != null && ongoingConnection.To != null);
+                rootVisualElement.EnableInClassList("connection-from", ongoingConnection?.From != null);
+                rootVisualElement.EnableInClassList("connection-to", ongoingConnection?.To != null);
             }
         }
         private Connection ongoingConnection;
-
-        private void KillConnection(MouseUpEvent mue)
-        {
-            OngoingConnection?.Remove();
-            OngoingConnection = null;
-        }
-
-        private void BuildNodeMenu(DropdownMenu menu)
-        {
-            NodeTypes = NodeAssembly.GetRegisteredNodeTypes()
-                .Select(t => (NodeType: t, NodeName: t.GetCustomAttributes(typeof(NodeNameAttribute), false).FirstOrDefault() as NodeNameAttribute))
-                .Where(x => x.NodeName != null)
-                .Select(x => (Constructor: x.NodeType.GetConstructor(Array.Empty<Type>()), x.NodeName.Label)).ToList();
-            foreach (var (Constructor, Label) in NodeTypes)
-            {
-                menu.AppendAction(Label, (ac) => {
-                    var newNode = Constructor.Invoke(null) as Node;
-                    AddNode(newNode, null);
-                }, ac => DropdownMenuAction.Status.Normal);
-            }
-        }
 
         public void AddNode(Node newNode, List<string> data)
         {
@@ -173,15 +132,6 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
         internal void SetUnsavedChanges()
         {
             hasUnsavedChanges = true;
-        }
-    }
-
-    public class RootElement: VisualElement
-    {
-        public readonly ToolWindow Window;
-        public RootElement(ToolWindow window)
-        {
-            Window = window;
         }
     }
 }

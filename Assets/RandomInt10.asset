@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: RandomInt10
   m_EditorClassIdentifier: 
   Nodes:
-  - NodeType: Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard.RandomNode
-    X: 247
-    Y: 120
-    Data: []
+  - NodeType: Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Math.ArithmeticNode
+    X: 522
+    Y: 190
+    Data:
+    - Multiplication
   Connections: []

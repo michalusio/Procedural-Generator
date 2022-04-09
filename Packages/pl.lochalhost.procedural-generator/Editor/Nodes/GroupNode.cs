@@ -26,9 +26,9 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes
         private void ChangeInternalNode(ChangeEvent<Object> evt)
         {
             ResetSockets();
-            this.Q<ObjectField>().Q<Label>().text = objectField.value?.name ?? "None";
-            this.Q<NodeHeader>().Q<Label>().text = objectField.value?.name ?? "Group";
-            Root.Window.SetUnsavedChanges();
+            this.Q<ObjectField>().Q<Label>().text = objectField.value != null ? objectField.value.name : null ?? "None";
+            this.Q<NodeHeader>().Q<Label>().text = objectField.value != null ? objectField.value.name : null ?? "Group";
+            SetUnsavedChanges();
         }
 
         public override void Recalculate()
@@ -90,7 +90,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes
         {
             if (data.Count != 1) return;
             objectField.value = AssetDatabase.LoadAssetAtPath<ProceduralGeneratorAsset>(AssetDatabase.GUIDToAssetPath((string)data[0]));
-            this.Q<NodeHeader>().Q<Label>().text = objectField.value?.name ?? "Group";
+            this.Q<NodeHeader>().Q<Label>().text = objectField.value != null ? objectField.value.name : null ?? "Group";
             ResetSockets();
         }
 

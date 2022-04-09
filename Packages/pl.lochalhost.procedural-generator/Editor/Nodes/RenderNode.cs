@@ -34,10 +34,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes
 
         private void SaveModel()
         {
-            var assetPath = AssetDatabase.GetAssetPath(Root.Window.asset);
-            var directoryPath = Path.GetDirectoryName(assetPath);
-            var indexOfThisRenderNode = Root.Window.Nodes.Where(n => n is RenderNode).TakeWhile(n => n != this).Count();
-            var meshPath = Path.Combine(directoryPath, $"{Root.Window.asset.name}_{indexOfThisRenderNode}.asset");
+            var meshPath = GetDerivedAssetPath();
             AssetDatabase.DeleteAsset(meshPath);
             Mesh meshToSave = Object.Instantiate(display.Mesh);
             MeshUtility.Optimize(meshToSave);

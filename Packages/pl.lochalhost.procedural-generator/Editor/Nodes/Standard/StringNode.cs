@@ -20,7 +20,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard
         {
             Outputs[0].Value = evt.newValue;
             MarkAsChanged();
-            Root.Window.SetUnsavedChanges();
+            SetUnsavedChanges();
         }
 
         protected override (List<NodeIn>, List<NodeOut>) SetupSockets()

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Nodes:
   - NodeType: Packages.pl.lochalhost.procedural_generator.Editor.Nodes.GroupNode
-    X: 440
-    Y: 219
+    X: 424
+    Y: 220
     Data:
     - 808b788ef9534cd4bb2026af5d5ede9f
   - NodeType: Packages.pl.lochalhost.procedural_generator.Editor.Nodes.DisplayNode
@@ -23,16 +23,16 @@ MonoBehaviour:
     Y: 156
     Data: []
   - NodeType: Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops.ForStartNode
-    X: 259
-    Y: 156
+    X: 281
+    Y: 123
     Data: []
   - NodeType: Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops.ForEndNode
     X: 748
     Y: 161
     Data: []
   - NodeType: Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Standard.IntegerNode
-    X: 20
-    Y: 167
+    X: 15
+    Y: 119
     Data:
     - 1
   - NodeType: Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Loops.RangeNode

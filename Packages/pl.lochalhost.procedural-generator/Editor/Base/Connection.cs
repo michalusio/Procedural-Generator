@@ -1,5 +1,4 @@
-﻿using Packages.pl.lochalhost.procedural_generator.Editor.Packages.pl.lochalhost.procedural_generator.Editor.Base;
-using Packages.pl.lochalhost.procedural_generator.Runtime;
+﻿using Packages.pl.lochalhost.procedural_generator.Runtime;
 using System;
 using System.Linq;
 using UnityEngine.UIElements;
@@ -84,7 +83,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             root.UnregisterCallback<MouseMoveEvent>(MouseMove);
         }
 
-        public static Connection MakeFrom(RootElement root, NodeOut nodeOut)
+        internal static Connection MakeFrom(RootElement root, NodeOut nodeOut)
         {
             var con = new Connection(root)
             {
@@ -94,7 +93,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             return con;
         }
 
-        public static Connection MakeTo(RootElement root, NodeIn nodeIn)
+        internal static Connection MakeTo(RootElement root, NodeIn nodeIn)
         {
             var con = new Connection(root)
             {

@@ -20,6 +20,14 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor
             return nodeTypes.AsEnumerable();
         }
 
+        internal static IEnumerable<(ConstructorInfo Constructor, string Label)> GetNodeMenuOptions()
+        {
+            return GetRegisteredNodeTypes()
+                .Select(t => (NodeType: t, NodeName: t.GetCustomAttributes(typeof(NodeNameAttribute), false).FirstOrDefault() as NodeNameAttribute))
+                .Where(x => x.NodeName != null)
+                .Select(x => (Constructor: x.NodeType.GetConstructor(Array.Empty<Type>()), x.NodeName.Label)).ToList();
+        }
+
         public static void RegisterNodeTypes(params Type[] types)
         {
             foreach (var t in types.Where(t => t.IsSubclassOf(typeof(Node))))

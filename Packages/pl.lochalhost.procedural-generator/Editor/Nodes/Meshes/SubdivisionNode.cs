@@ -39,7 +39,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Nodes.Meshes
             if (value >= 0 && value < 6)
             {
                 Recalculate();
-                Root.Window.SetUnsavedChanges();
+                SetUnsavedChanges();
             }
             else field.value = evt.previousValue;
         }

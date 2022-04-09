@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Packages.pl.lochalhost.procedural_generator.Runtime.Packages.pl.lochalhost.procedural_generator.Runtime
+namespace Packages.pl.lochalhost.procedural_generator.Runtime
 {
     public interface INodeInOut
     {

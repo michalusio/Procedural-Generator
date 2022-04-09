@@ -1,17 +1,14 @@
-﻿using Packages.pl.lochalhost.procedural_generator.Editor.Packages.pl.lochalhost.procedural_generator.Editor.Base;
-using Packages.pl.lochalhost.procedural_generator.Runtime;
-using Packages.pl.lochalhost.procedural_generator.Runtime.Packages.pl.lochalhost.procedural_generator.Runtime;
-using System;
-using System.Collections;
+﻿using Packages.pl.lochalhost.procedural_generator.Runtime;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
 {
-    public abstract class Node: VisualElement, ISerializable<SerializableNode>, INode
+    public abstract partial class Node: VisualElement, ISerializable<SerializableNode>, INode
     {
         public IList<NodeIn> Inputs => InNodes.Nodes;
         public IList<NodeOut> Outputs => OutNodes.Nodes;
@@ -21,7 +18,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
         private readonly NodeGroup<NodeIn> InNodes;
         private readonly NodeGroup<NodeOut> OutNodes;
 
-        protected RootElement Root { get; private set; }
+        private RootElement Root { get; set; }
 
         protected Node(string label)
         {
@@ -48,15 +45,33 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
 
         internal void SetRootElement(RootElement root, List<string> data)
         {
-            this.Root = root;
-            this.Root.Window.SetUnsavedChanges();
+            Root = root;
+            SetUnsavedChanges();
             LoadData(data);
         }
 
+        /// <summary>
+        /// Called when a new connection is made to an input of the node
+        /// </summary>
+        /// <param name="connection">The connection that was made</param>
         protected internal virtual void OnInputLinked(Connection connection) { }
+
+        /// <summary>
+        /// Called when a connection is unlinked from an input of the node
+        /// </summary>
+        /// <param name="connection">The connection that was removed</param>
         protected internal virtual void OnInputUnlinked(Connection connection) { }
 
+        /// <summary>
+        /// Called when a new connection is made to an output of the node
+        /// </summary>
+        /// <param name="connection">The connection that was made</param>
         protected internal virtual void OnOutputLinked(Connection connection) { }
+
+        /// <summary>
+        /// Called when a connection is unlinked from an output of the node
+        /// </summary>
+        /// <param name="connection">The connection that was removed</param>
         protected internal virtual void OnOutputUnlinked(Connection connection) { }
 
         /// <summary>
@@ -120,6 +135,26 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             }
         }
 
+        /// <summary>
+        /// Marks the window the node resides in as having changes that will need to be saved.
+        /// </summary>
+        protected void SetUnsavedChanges()
+        {
+            Root.Window.SetUnsavedChanges();
+        }
+
+        /// <summary>
+        /// Returns a path for the derived asset (could be used to save a result of operations of a node)
+        /// </summary>
+        /// <returns>A path for an asset derived from the node</returns>
+        protected string GetDerivedAssetPath()
+        {
+            var assetPath = AssetDatabase.GetAssetPath(Root.Window.asset);
+            var directoryPath = Path.GetDirectoryName(assetPath);
+            var indexOfThisNode = Root.Window.Nodes.TakeWhile(n => n != this).Count();
+            return Path.Combine(directoryPath, $"{Root.Window.asset.name}_{indexOfThisNode}.asset");
+        }
+
         public SerializableNode Serialize()
         {
             return new SerializableNode
@@ -131,7 +166,7 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
             };
         }
 
-        private void RemoveNode()
+        internal void RemoveNode()
         {
             RemoveFromHierarchy();
             InNodes.Clear();
@@ -143,19 +178,6 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
         private void RecalculateMinHeight()
         {
             style.minHeight = 24 + Mathf.Max(InNodes.Nodes.Count, OutNodes.Nodes.Count) * 14;
-        }
-
-        internal class NodeHeader : VisualElement
-        {
-            public NodeHeader(string label)
-            {
-                Add(new Label(label));
-                this.AddManipulator(new Dragger());
-                Add(new Button(() => (parent as Node).RemoveNode())
-                {
-                    text = "X"
-                });
-            }
         }
 
         private class NodeGroup<T> : VisualElement where T : NodeInOut
@@ -185,148 +207,6 @@ namespace Packages.pl.lochalhost.procedural_generator.Editor.Base
                 }
                 nodes.Clear();
             }
-        }
-    }
-
-    public class NodeIn: NodeInOut
-    {
-        public NodeIn(string label, Type type, bool multi) : base(label, type, multi)
-        {
-            Add(new NodeSocket(type, multi));
-            Add(new Label(label));
-        }
-
-        public void SetValue(object value)
-        {
-            if (Multi)
-            {
-                Value = Connections
-                    .Where(c => c.From != null)
-                    .SelectMany(c => c.From.Value is IEnumerable en ? en.OfType<object>() : new [] { c.From.Value })
-                    .ToList()
-                    .AsReadOnly();
-            }
-            else
-            {
-                Value = value;
-            }
-        }
-    }
-
-    public class NodeOut : NodeInOut
-    {
-        public NodeOut(string label, Type type) : base(label, type)
-        {
-            Add(new Label(label));
-            Add(new NodeSocket(type));
-        }
-    }
-
-    public class NodeInOut : VisualElement, INodeInOut
-    {
-        public readonly ObservableCollection<Connection> Connections = new ObservableCollection<Connection>();
-        public Node Node { get; private set; }
-        public string Label { get; private set; }
-
-        private Type type;
-        public Type Type
-        {
-            get => type;
-            set
-            {
-                type = value;
-                var socket = this.Q<NodeSocket>();
-                if (socket != null) socket.Type = value;
-                MarkDirtyRepaint();
-            }
-        }
-
-        public bool Multi { get; private set; }
-        private object value;
-        public object Value
-        {
-            get => value;
-            set
-            {
-                if (Type.IsValueType && value == null)
-                {
-                    this.value = default;
-                    return;
-                }
-                if (value != null)
-                {
-                    if (!Multi && !Type.IsAssignableFrom(value.GetType()))
-                    {
-                        throw new ApplicationException($"Value is not valid type - {value.GetType().Name} but needs {Type.Name}");
-                    }
-                    if (Multi)
-                    {
-                        if (!(value is IEnumerable list))
-                        {
-                            throw new ApplicationException($"Value needs a multi type but did not receive a list - {value.GetType().Name}");
-                        }
-                        foreach(var v in list)
-                        {
-                            if (v != null && !Type.IsAssignableFrom(v.GetType()))
-                            {
-                                throw new ApplicationException($"Element of a multi list is not valid type - {v.GetType().Name} but needs {Type.Name}");
-                            }
-                        }
-                    }
-                }
-                this.value = value;
-            }
-        }
-
-        public NodeInOut(string label, Type type, bool multi = false)
-        {
-            Label = label;
-            Multi = multi;
-            Type = type;
-            Connections.CollectionChanged += Connections_CollectionChanged;
-        }
-
-        public void AssignNode(Node node)
-        {
-            if (Node != null) throw new ApplicationException();
-            Node = node;
-        }
-
-        private void Connections_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            EnableInClassList("filled", Connections.Any());
-        }
-    }
-
-    internal class NodeSocket: VisualElement
-    {
-        private Type type;
-        internal Type Type
-        {
-            set
-            {
-                if (type != null)
-                {
-                    RemoveFromClassList(type.GetClassName());
-                }
-                AddToClassList(value.GetClassName());
-                type = value;
-                tooltip = type.PrettyName() + (Multi ? " (Multiple)" : "");
-                MarkDirtyRepaint();
-            }
-        }
-
-        private readonly bool Multi;
-
-        public NodeSocket(Type type, bool multi = false)
-        {
-            Multi = multi;
-            Type = type;
-            if (Multi) {
-                AddToClassList("multi");
-            };
-            this.AddManipulator(new SocketClicker());
-            this.AddManipulator(new SocketDisconnector());
         }
     }
 }
